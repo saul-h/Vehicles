@@ -11,7 +11,7 @@ b. The list of available models:
 
 
 c. The list of available vehicle based on given make and model id can be fetched as below
-+ https://thawing-beach-68207.herokuapp.com/cars/<make>/<model>/<zipcode>
++ https://thawing-beach-68207.herokuapp.com/cars/<make\>/\<model\>/\<zipcode\>
 + e.g https://thawing-beach-68207.herokuapp.com/cars/10/20/92603
 
 
