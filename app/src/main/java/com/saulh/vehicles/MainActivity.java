@@ -41,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerMake = findViewById(R.id.spinnerMake);
         new GetCars().execute();
 
-
-
-
     }
 
     private class GetCars extends AsyncTask<Void, Void, Void> {
@@ -122,6 +119,18 @@ public class MainActivity extends AppCompatActivity {
             ArrayAdapter<String> makeArray = new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item, arrayList_interface  );
             //makeArray.setDropDownViewResource(R.layout.spinner_item);
             spinnerMake.setAdapter(makeArray);
+
+            spinnerMake.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getApplicationContext(),"Say sth", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
 
     }
