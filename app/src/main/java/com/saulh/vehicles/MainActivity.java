@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
             spinnerMake.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(getApplicationContext(),"Say sth", Toast.LENGTH_SHORT).show();
+                    String selected_item = spinnerMake.getSelectedItem().toString();
+                    Toast.makeText(getApplicationContext(),selected_item, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
