@@ -49,39 +49,21 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.MyViewHolder> {
         holder.car_row_price.setText("$ " + car_list.get(position).price + "0");
         holder.car_row_mileage.setText(car_list.get(position).mileage + " miles");
         holder.car_row_model.setText(car_list.get(position).model);
-        /*
-        holder.each_car_row_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //create an instance of CarDetailByID + carID, carID is an attribute of Car object
-                //new GetCarDetailByID(context, carDetailByIDPrefix + car_list.get(holder.getAdapterPosition()).carID).execute();
 
-                //Intent intent = new Intent(context, CarDetailMain.class);
-                //intent.putExtra("carID", car_list.get(holder.getAdapterPosition()).carID);
-                //context.startActivity(intent);
-                Toast.makeText(context, "Fired", Toast.LENGTH_SHORT).show();
+        holder.itemView.setOnClickListener(v -> {
+            Log.d(TAG, "onlcikc clicked "  );
 
-            }
-        });
-         */
+            new GetCarDetailByID(carDetailByIDPrefix + car_list.get(holder.getAdapterPosition()).carID).execute();
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onlcikc clicked "  );
+            //AppCompatActivity activity = (AppCompatActivity) v.getContext();
+           // Fragment myFragment = new VehicleDetailsFragment();
+            //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fra, myFragment   );
+            Context context = v.getContext();
+            Intent intent = new Intent(context, CarDetailMain.class);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(intent);
 
-                new GetCarDetailByID(carDetailByIDPrefix + car_list.get(holder.getAdapterPosition()).carID).execute();
-
-                //AppCompatActivity activity = (AppCompatActivity) v.getContext();
-               // Fragment myFragment = new VehicleDetailsFragment();
-                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fra, myFragment   );
-                Context context = v.getContext();
-                Intent intent = new Intent(context, CarDetailMain.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intent);
-
-            }
         });
     }
 
