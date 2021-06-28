@@ -11,20 +11,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
 
     HashMap<String, String> carMake;
-    ArrayList<HashMap<String, String>> models;
+    public static ArrayList<HashMap<String, String>> models;
+    public static HashMap<String, String> thisCarDetailByID;
 
     private String get_car_id(HashMap<String, String> carMake, String car_name){
         String key = " ";
@@ -58,13 +54,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         carMake = new HashMap<>();
+        thisCarDetailByID = new HashMap<>();
+
         spinnerMake = findViewById(R.id.spinnerMake);
         spinnerModel = findViewById(R.id.spinnerModel);
         recyclerView = findViewById(R.id.recyclerViewCars);
 
         new GetCars().execute();
         //new GetModel(model_url_prefix).execute();
-
     }
 
     private class GetCars extends AsyncTask<Void, Void, Void> {
