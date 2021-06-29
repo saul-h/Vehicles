@@ -18,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/price"
-        android:layout_toLeftOf="@id/txtPrice"/>
+        android:layout_toLeftOf="@id/txtPrice"
+        android:layout_toStartOf="@id/txtPrice" />
 
     <TextView
         android:id="@+id/txtPrice"
@@ -34,7 +35,7 @@
         android:id="@+id/txtDetails"
         android:layout_width="175dp"
         android:layout_height="175dp"
-        android:text="Description"
+        android:text="@string/description"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/txtMakeModel"/>
@@ -43,7 +44,7 @@
         android:id="@+id/txtLastUpdated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Updated: "
+        android:text="@string/last_updated"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/txtDetails"/>
