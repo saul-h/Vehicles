@@ -27,7 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Car> car_list;
-    String carDetailByIDPrefix = "https://thawing-beach-68207.herokuapp.com/cars/";
+
     private final String TAG = MyAdapter.class.getSimpleName();
 
     public MyAdapter(Context ct, ArrayList<Car> car_list){
@@ -53,16 +53,20 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.MyViewHolder> {
         holder.itemView.setOnClickListener(v -> {
             Log.d(TAG, "onlcikc clicked "  );
 
-            new GetCarDetailByID(carDetailByIDPrefix + car_list.get(holder.getAdapterPosition()).carID).execute();
+            //new GetCarDetailByID(carDetailByIDPrefix + car_list.get(holder.getAdapterPosition()).carID).execute();
 
             //AppCompatActivity activity = (AppCompatActivity) v.getContext();
            // Fragment myFragment = new VehicleDetailsFragment();
             //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fra, myFragment   );
-            Context context = v.getContext();
-            Intent intent = new Intent(context, CarDetailMain.class);
+
+
+
+            Intent intent = new Intent(v.getContext(), CarDetailMain.class);
             //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            context.startActivity(intent);
+            intent.putExtra("CarID",car_list.get(holder.getAdapterPosition()).carID );
+            //startActivity(intent);
+            v.getContext().startActivity(intent);
 
         });
     }
