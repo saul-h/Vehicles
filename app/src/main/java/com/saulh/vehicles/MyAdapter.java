@@ -53,19 +53,10 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.MyViewHolder> {
         holder.itemView.setOnClickListener(v -> {
             Log.d(TAG, "onlcikc clicked "  );
 
-            //new GetCarDetailByID(carDetailByIDPrefix + car_list.get(holder.getAdapterPosition()).carID).execute();
-
-            //AppCompatActivity activity = (AppCompatActivity) v.getContext();
-           // Fragment myFragment = new VehicleDetailsFragment();
-            //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fra, myFragment   );
-
-
-
             Intent intent = new Intent(v.getContext(), CarDetailMain.class);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.putExtra("CarID",car_list.get(holder.getAdapterPosition()).carID );
-            //startActivity(intent);
             v.getContext().startActivity(intent);
 
         });
