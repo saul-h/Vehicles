@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressDialog pDialog;
 
-    HashMap<String, String> carMake;
+    public static HashMap<String, String> carMake;
     public static ArrayList<HashMap<String, String>> models;
     public static HashMap<String, String> thisCarDetailByID;
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         carMake = new HashMap<>();
         thisCarDetailByID = new HashMap<>();
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         new GetCars().execute();
         //new GetModel(model_url_prefix).execute();
     }
+
 
     private class GetCars extends AsyncTask<Void, Void, Void> {
         private final String TAG = GetCars.class.getSimpleName();

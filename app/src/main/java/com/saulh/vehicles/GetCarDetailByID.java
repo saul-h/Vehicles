@@ -124,12 +124,5 @@ public class GetCarDetailByID extends AsyncTask<Void, Void, Void> {
 
         MainActivity.thisCarDetailByID = carDetailByID;
 
-        System.out.println("from GetCarDetailByID");
-        for(String i: MainActivity.thisCarDetailByID.values()){
-            System.out.println(i);
-        }
-        System.out.println("ID: " + MainActivity.thisCarDetailByID.get("id"));
-
-
     }
 }
